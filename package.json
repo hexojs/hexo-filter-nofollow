@@ -1,6 +1,6 @@
 {
   "name": "hexo-filter-nofollow",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Add nofollow attribute to all external links automatically",
   "main": "index.js",
   "directories": {
@@ -14,6 +14,7 @@
     "node": ">= 8.6.0"
   },
   "scripts": {
+    "eslint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,5 +33,9 @@
   "bugs": {
     "url": "https://github.com/hexojs/hexo-filter-nofollow/issues"
   },
-  "homepage": "https://github.com/hexojs/hexo-filter-nofollow#readme"
+  "homepage": "https://github.com/hexojs/hexo-filter-nofollow#readme",
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-hexo": "^3.0.0"
+  }
 }
