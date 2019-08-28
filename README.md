@@ -1,6 +1,9 @@
 # hexo-filter-nofollow
 
 [![npm version](https://badge.fury.io/js/hexo-filter-nofollow.svg)](https://www.npmjs.com/package/hexo-filter-nofollow)
+[![npm license](https://img.shields.io/npm/l/hexo-filter-nofollow)](./LICENSE)
+[![travis status](https://api.travis-ci.com/hexojs/hexo-filter-nofollow.svg?branch=master)](https://travis-ci.com/hexojs/hexo-filter-nofollow)
+![npm download](https://img.shields.io/npm/dt/hexo-filter-nofollow)
 
 (WIP) Add nofollow attribute to all external links automatically.
 
