@@ -5,9 +5,7 @@ node_js:
   - "10"
   - "node" # latest stable Node.js release
 
-cache:
-  directories:
-    - "node_modules" # cache the modules for faster build
+cache: npm
 
 script:
   - npm install

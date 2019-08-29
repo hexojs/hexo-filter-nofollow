@@ -17,10 +17,7 @@
     "eslint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hexojs/hexo-filter-nofollow.git"
-  },
+  "repository": "hexojs/hexo-filter-nofollow",
   "keywords": [
     "hexo",
     "seo",
