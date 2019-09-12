@@ -26,7 +26,7 @@ nofollow:
     - 'exclude2.com'
 ```
 
-- **enable** - Enable the plugin. Default value is `false`.
+- **enable** - Enable the plugin. Default value is `true`.
 - **field** - The scope you want the plugin to proceed, can be 'site' or 'post'. Default value is `site`.
   - 'post' - Only add nofollow attribute to external links in your post content
   - 'site' - Add nofollow attribute to external links of whole sites
