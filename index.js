@@ -8,12 +8,6 @@ hexo.config.nofollow = Object.assign({
   exclude: []
 }, hexo.config.nofollow);
 
-let exclude = hexo.config.nofollow.exclude;
-if (exclude && !Array.isArray(exclude)) {
-  exclude = [exclude];
-  hexo.config.nofollow.exclude = exclude;
-}
-
 const config = hexo.config.nofollow;
 
 if (!config.enable) return;
