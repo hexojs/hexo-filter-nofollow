@@ -10,3 +10,4 @@ cache: npm
 script:
   - npm install
   - npm run eslint
+  - npm test
