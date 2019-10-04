@@ -11,6 +11,9 @@ node_js:
 cache: npm
 
 script:
+  - if [[ $TRAVIS_OS_NAME == "windows" ]]; then
+      git config core.autocrlf false && git add --renormalize . && git reset --hard;
+    fi
   - npm install
   - npm run eslint
   - npm test
