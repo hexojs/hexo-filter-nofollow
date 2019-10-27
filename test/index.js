@@ -76,7 +76,11 @@ describe('hexo-filter-nofollow', () => {
       '5. Internal link',
       '<a href="/archives/foo.html">Link</a>',
       '6. Ignore links don\'t have "href" attribute',
-      '<a>Anchor</a>'
+      '<a>Anchor</a>',
+      '7. Link with hash (#), mailto: , javascript: shouldn\'t be processed',
+      '<a href="#top">Hexo</a>',
+      '<a href="mailto:hi@hexo.io">Hexo</a>',
+      '<a href="javascript:alert(\'Hexo is awesome!\');">Hexo</a>'
     ].join('\n');
 
     hexo.config.nofollow.field = 'post';
@@ -102,7 +106,11 @@ describe('hexo-filter-nofollow', () => {
       '5. Internal link',
       '<a href="/archives/foo.html">Link</a>',
       '6. Ignore links don\'t have "href" attribute',
-      '<a>Anchor</a>'
+      '<a>Anchor</a>',
+      '7. Link with hash (#), mailto: , javascript: shouldn\'t be processed',
+      '<a href="#top">Hexo</a>',
+      '<a href="mailto:hi@hexo.io">Hexo</a>',
+      '<a href="javascript:alert(\'Hexo is awesome!\');">Hexo</a>'
     ].join('\n'));
 
     hexo.config.nofollow.field = 'site';
