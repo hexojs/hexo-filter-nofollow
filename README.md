@@ -7,7 +7,7 @@
 
 Add nofollow attribute to all external links automatically.
 
-`hexo-filter-nofollow` add `rel="external nofollow noreferrer"` to all external links for security, privacy and SEO. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+`hexo-filter-nofollow` add `rel="noopener external nofollow noreferrer"` to all external links for security, privacy and SEO. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
 
 ## Installations
 
