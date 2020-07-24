@@ -24,6 +24,7 @@ nofollow:
   exclude:
     - 'exclude1.com'
     - 'exclude2.com'
+  noreferrer: false
 ```
 
 - **enable** - Enable the plugin. Default value is `true`.
@@ -32,3 +33,4 @@ nofollow:
   - 'site' - Add nofollow attribute to external links of whole sites
 - **exclude** - Exclude hostname. Specify subdomain when applicable, including `www`.
   - 'exclude1.com' does not apply to `www.exclude1.com` nor `en.exclude1.com`.
+- **noreferrer** - Add noreferrer to `rel` attribute.
