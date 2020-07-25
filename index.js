@@ -5,7 +5,8 @@
 hexo.config.nofollow = Object.assign({
   enable: true,
   field: 'site',
-  exclude: []
+  exclude: [],
+  noreferrer: false
 }, hexo.config.nofollow);
 
 const config = hexo.config.nofollow;
