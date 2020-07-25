@@ -7,7 +7,7 @@
 
 Add nofollow attribute to all external links automatically.
 
-`hexo-filter-nofollow` add `rel="noopener external nofollow noreferrer"` to all external links for security, privacy and SEO. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+`hexo-filter-nofollow` add `rel="noopener external nofollow"` to all external links for security, privacy and SEO. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
 
 ## Installations
 
@@ -33,4 +33,5 @@ nofollow:
   - 'site' - Add nofollow attribute to external links of whole sites
 - **exclude** - Exclude hostname. Specify subdomain when applicable, including `www`.
   - 'exclude1.com' does not apply to `www.exclude1.com` nor `en.exclude1.com`.
-- **noreferrer** - Add noreferrer to `rel` attribute.
+- **noreferrer** - Add noreferrer to `rel` attribute. Prevents browser from sending [referer](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) to external links.
+  - Disabling this option (default) does not remove existing `noreferrer` value.
