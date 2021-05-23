@@ -5,6 +5,8 @@
 hexo.config.nofollow = Object.assign({
   enable: true,
   field: 'site',
+  elements: ['a'],
+  include: [],
   exclude: []
 }, hexo.config.nofollow);
 

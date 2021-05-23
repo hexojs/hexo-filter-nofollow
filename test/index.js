@@ -9,49 +9,71 @@ describe('hexo-filter-nofollow', () => {
   const nofollowFilter = require('../lib/filter').bind(hexo);
 
   hexo.config.url = 'https://example.com';
-  hexo.config.nofollow = {};
+  hexo.config.nofollow = { include: [], exclude: [], elements: ['a', 'img'] };
 
   describe('Default', () => {
     const content = [
       '# External link test',
       '1. External link',
       '<a href="https://hexo.io/">Hexo</a>',
+      '<img src="https://hexo.io/">Hexo</img>',
       '2. External link with existed "rel" Attribute',
-      '<a rel="license" href="https://github.com/hexojs/hexo-filter-nofollow/blob/master/LICENSE">Hexo</a>',
-      '<a href="https://github.com/hexojs/hexo-filter-nofollow/blob/master/LICENSE" rel="license">Hexo</a>',
+      '<a rel="license" href="https://hexo.io">Hexo</a>',
+      '<a href="https://hexo.io" rel="license">Hexo</a>',
+      '<img src="https://hexo.io" rel="license">Hexo</img>',
+      '<img rel="license" src="https://hexo.io" rel="license">Hexo</img>',
       '3. External link with existing "rel=noopener", "rel=external" or "rel=noreferrer"',
       '<a rel="noopener" href="https://hexo.io/">Hexo</a>',
       '<a href="https://hexo.io/" rel="noreferrer">Hexo</a>',
       '<a rel="noopener noreferrer" href="https://hexo.io/">Hexo</a>',
       '<a href="https://hexo.io/" rel="external noreferrer">Hexo</a>',
+      '<img rel="noopener" src="https://hexo.io/">Hexo</img>',
+      '<img src="https://hexo.io/" rel="noreferrer">Hexo</img>',
+      '<img rel="noopener noreferrer" src="https://hexo.io/">Hexo</img>',
+      '<img src="https://hexo.io/" rel="external noreferrer">Hexo</img>',
       '4. External link with Other Attributes',
       '<a class="img" href="https://hexo.io/">Hexo</a>',
       '<a href="https://hexo.io/" class="img">Hexo</a>',
+      '<img class="img" src="https://hexo.io/">Hexo</img>',
+      '<img src="https://hexo.io/" class="img">Hexo</img>',
       '5. Internal link',
       '<a href="/archives/foo.html">Link</a>',
+      '<img src="/archives/foo.html">Link</img>',
       '6. Ignore links don\'t have "href" attribute',
-      '<a>Anchor</a>'
+      '<a>Anchor</a>',
+      '<img>Anchor</img>'
     ].join('\n');
 
     const expected = [
       '# External link test',
       '1. External link',
       '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</a>',
+      '<img src="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</img>',
       '2. External link with existed "rel" Attribute',
-      '<a href="https://github.com/hexojs/hexo-filter-nofollow/blob/master/LICENSE" rel="noopener external nofollow noreferrer license">Hexo</a>',
-      '<a href="https://github.com/hexojs/hexo-filter-nofollow/blob/master/LICENSE" rel="noopener external nofollow noreferrer license">Hexo</a>',
+      '<a href="https://hexo.io" rel="noopener external nofollow noreferrer license">Hexo</a>',
+      '<a href="https://hexo.io" rel="noopener external nofollow noreferrer license">Hexo</a>',
+      '<img src="https://hexo.io" rel="noopener external nofollow noreferrer license">Hexo</img>',
+      '<img src="https://hexo.io" rel="noopener external nofollow noreferrer license">Hexo</img>',
       '3. External link with existing "rel=noopener", "rel=external" or "rel=noreferrer"',
       '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</a>',
       '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</a>',
       '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</a>',
       '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</a>',
+      '<img src="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</img>',
+      '<img src="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</img>',
+      '<img src="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</img>',
+      '<img src="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</img>',
       '4. External link with Other Attributes',
       '<a class="img" href="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</a>',
       '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer" class="img">Hexo</a>',
+      '<img class="img" src="https://hexo.io/" rel="noopener external nofollow noreferrer">Hexo</img>',
+      '<img src="https://hexo.io/" rel="noopener external nofollow noreferrer" class="img">Hexo</img>',
       '5. Internal link',
       '<a href="/archives/foo.html">Link</a>',
+      '<img src="/archives/foo.html">Link</img>',
       '6. Ignore links don\'t have "href" attribute',
-      '<a>Anchor</a>'
+      '<a>Anchor</a>',
+      '<img>Anchor</img>'
     ].join('\n');
 
     it('Default to field = "site"', () => {

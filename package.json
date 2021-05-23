@@ -37,5 +37,8 @@
     "eslint-config-hexo": "^4.1.0",
     "hexo": "hexojs/hexo",
     "mocha": "^8.0.1"
+  },
+  "dependencies": {
+    "minimatch": "^3.0.4"
   }
 }
