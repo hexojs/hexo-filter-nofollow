@@ -21,6 +21,9 @@ $ npm i hexo-filter-nofollow --save
 nofollow:
   enable: true
   field: site
+  elements: 
+    - 'a'
+    - 'img'
   exclude:
     - 'exclude1.com'
     - 'exclude2.com'
@@ -30,5 +33,6 @@ nofollow:
 - **field** - The scope you want the plugin to proceed, can be 'site' or 'post'. Default value is `site`.
   - 'post' - Only add nofollow attribute to external links in your post content
   - 'site' - Add nofollow attribute to external links of whole sites
+- **elements** - The tag to be processed, currently only supports `<a>` and `<img>`.
 - **exclude** - Exclude hostname. Specify subdomain when applicable, including `www`.
   - 'exclude1.com' does not apply to `www.exclude1.com` nor `en.exclude1.com`.
