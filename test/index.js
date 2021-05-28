@@ -9,7 +9,7 @@ describe('hexo-filter-nofollow', () => {
   const nofollowFilter = require('../lib/filter').bind(hexo);
 
   hexo.config.url = 'https://example.com';
-  hexo.config.nofollow = { include: [], exclude: [], elements: ['a', 'img'] };
+  hexo.config.nofollow = { include: [], exclude: [], elements: ['a', 'img'], rel: ['noopener', 'external', 'nofollow', 'noreferrer'], referrerpolicy: 'no-referrer' };
 
   describe('Default', () => {
     const content = [
