@@ -40,7 +40,7 @@ nofollow:
   - 'post' - Only add nofollow attribute to external links in your post content
   - 'site' - Add nofollow attribute to external links of whole sites
 - **elements** - The tag to be processed, currently only supports `<a>` and `<img>`.
-- **include** - Include hostname. You can use `*` or `?` glob wildcards.
+- **include** - Include hostname. You can use `*` or `?` glob wildcards. If include is configured, other external links will not be processed. 
 - **exclude** - Exclude hostname. You can use `*` or `?` glob wildcards.
   - `exclude1.com` does not apply to `www.exclude1.com` nor `en.exclude1.com`.
   - `*.exclude1.com` can be apply to `www.exclude1.com` or `en.exclude1.com`.
