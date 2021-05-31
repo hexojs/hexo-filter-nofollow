@@ -94,6 +94,55 @@ describe('hexo-filter-nofollow', () => {
     });
   });
 
+  describe('Include & Pattern', () => {
+    const content = [
+      '# Include & Pattern link test',
+      '1. External link',
+      '<a href="https://hexo.io/">Hexo</a>',
+      '2. Ignore links whose hostname is not match glob pattern',
+      '<a href="https://example.com">Example Domain</a>',
+      '3. Ignore links whose hostname is included in glob pattern',
+      '<a href="https://demo.example.org">Example Domain</a>',
+      '<a href="https://test.example.org">Example Domain</a>'
+    ].join('\n');
+
+    it('String', () => {
+      hexo.config.nofollow.include = ['hexo.io', '*.example.org'];
+
+      const result = nofollowFilter(content);
+
+      result.should.eql([
+        '# Include & Pattern link test',
+        '1. External link',
+        '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer" referrerpolicy="no-referrer">Hexo</a>',
+        '2. Ignore links whose hostname is not match glob pattern',
+        '<a href="https://example.com">Example Domain</a>',
+        '3. Ignore links whose hostname is included in glob pattern',
+        '<a href="https://demo.example.org" rel="noopener external nofollow noreferrer" referrerpolicy="no-referrer">Example Domain</a>',
+        '<a href="https://test.example.org" rel="noopener external nofollow noreferrer" referrerpolicy="no-referrer">Example Domain</a>'
+      ].join('\n'));
+    });
+
+    it('Array', () => {
+      hexo.config.nofollow.include = 'hexo.io';
+      hexo.config.nofollow.exclude = ['example.org', '*.example.org'];
+
+      const result = nofollowFilter(content);
+
+      result.should.eql([
+        '# Include & Pattern link test',
+        '1. External link',
+        '<a href="https://hexo.io/" rel="noopener external nofollow noreferrer" referrerpolicy="no-referrer">Hexo</a>',
+        '2. Ignore links whose hostname is not match glob pattern',
+        '<a href="https://example.com">Example Domain</a>',
+        '3. Ignore links whose hostname is included in glob pattern',
+        '<a href="https://demo.example.org">Example Domain</a>',
+        '<a href="https://test.example.org">Example Domain</a>'
+      ].join('\n'));
+    });
+  });
+
+
   describe('Exclude', () => {
     const content = [
       '# Exclude link test',
@@ -107,6 +156,7 @@ describe('hexo-filter-nofollow', () => {
     ].join('\n');
 
     it('String', () => {
+      hexo.config.nofollow.include = [];
       hexo.config.nofollow.exclude = 'example.org';
 
       const result = nofollowFilter(content);
