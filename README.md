@@ -21,14 +21,29 @@ $ npm i hexo-filter-nofollow --save
 nofollow:
   enable: true
   field: site
+  elements: 
+    - 'a'
+    - 'img'
   exclude:
-    - 'exclude1.com'
-    - 'exclude2.com'
+    - '*.exclude1.com'
+    - 'exclude2.com/path/*'
+  rel:
+    - 'external'
+    - 'noreferrer'
+    - 'nofollow'
+    - 'noopener'
+  referrerpolicy: 'no-referrer'
 ```
 
 - **enable** - Enable the plugin. Default value is `true`.
 - **field** - The scope you want the plugin to proceed, can be 'site' or 'post'. Default value is `site`.
   - 'post' - Only add nofollow attribute to external links in your post content
   - 'site' - Add nofollow attribute to external links of whole sites
-- **exclude** - Exclude hostname. Specify subdomain when applicable, including `www`.
-  - 'exclude1.com' does not apply to `www.exclude1.com` nor `en.exclude1.com`.
+- **elements** - The tag to be processed, currently only supports `<a>` and `<img>`.
+- **include** - Include hostname. You can use `*` or `?` glob wildcards. If include is configured, other external links will not be processed. 
+- **exclude** - Exclude hostname. You can use `*` or `?` glob wildcards.
+  - `exclude1.com` does not apply to `www.exclude1.com` nor `en.exclude1.com`.
+  - `*.exclude1.com` can be apply to `www.exclude1.com` or `en.exclude1.com`.
+- **minimatch** - The glob wildcard is supported by [minimath](https://github.com/isaacs/minimatch), this field can be configured for it.
+- **rel** - Configurable rel attribute value.
+- **referrerpolicy** - Configurable referrerpolicy attribute value.
