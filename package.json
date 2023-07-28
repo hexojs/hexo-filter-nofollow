@@ -11,7 +11,7 @@
     "index.js"
   ],
   "engines": {
-    "node": ">= 10.13.0"
+    "node": ">= 14"
   },
   "scripts": {
     "eslint": "eslint .",
