@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/hexojs/hexo-filter-nofollow#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^5.0.3",
     "eslint": "^8.3.0",
     "eslint-config-hexo": "^5.0.0",
     "hexo": "hexojs/hexo",
